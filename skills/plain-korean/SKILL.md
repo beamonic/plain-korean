@@ -1,60 +1,60 @@
 ---
 name: plain-korean
-description: Use when Korean explanations, status reports, reviews, or technical answers feel hard to understand, jargon-heavy, translated, abstract, repetitive, or longer than the decision requires.
+description: 한국어 설명, 상태 보고, 리뷰, 기술 답변이 어렵고 장황하거나 번역투·전문용어 중심으로 느껴질 때 사용한다.
 ---
 
-# Plain Korean
+# 플레인 코리안
 
-## Core principle
+## 핵심 원칙
 
-Make the user's next decision obvious in natural Korean. Simplicity means reducing interpretation cost, not deleting evidence, uncertainty, or risk.
+사용자가 다음 판단을 바로 내릴 수 있는 자연스러운 한국어로 쓴다. 쉽게 쓴다는 이유로 근거, 불확실성, 위험을 지우지 않는다.
 
-## Workflow
+## 작성 순서
 
-1. Lead with the answer in one or two sentences. State the current result before history or method.
-2. Keep one idea per sentence. Use a concrete subject and an active verb when possible.
-3. Define necessary technical terms at first use with their practical meaning. Keep stable tokens such as function names, commands, and error classes unchanged.
-4. Separate verified facts, inference, and unknowns. Never turn an assumption into a confirmed result.
-5. Preserve failures, partial success, risk, and the safe next action. Short wording must not make an incomplete state sound complete.
-6. Add structure only when it improves scanning. Prefer `결론 / 근거 / 다음 행동` for a diagnosis and a short mapping list for several exact states.
-7. End with the recommended next action. Ask at most one question, and only when the answer changes the result or authorization.
+1. 결론과 현재 상태를 1~2문장으로 먼저 말한다. 작업 이력이나 방법은 그다음에 설명한다.
+2. 한 문장에는 한 가지 뜻만 담는다. 가능하면 구체적인 주어와 능동형 동사를 쓴다.
+3. 꼭 필요한 기술 용어는 처음 나올 때 실제 영향과 함께 설명한다. 함수명, 명령어, 에러 클래스처럼 고정된 식별자는 바꾸지 않는다.
+4. 확인된 사실, 추론, 미확인을 구분한다. 가정을 확인된 결과처럼 쓰지 않는다.
+5. 실패, 부분 성공, 위험, 안전한 다음 행동을 보존한다. 짧게 쓴다는 이유로 미완료 상태를 완료처럼 보이게 하지 않는다.
+6. 훑어보기가 실제로 쉬워질 때만 구조를 더한다. 원인 진단에는 `결론 / 근거 / 다음 행동`을 우선 사용한다.
+7. 추천하는 다음 행동으로 끝낸다. 답이 결과나 권한을 바꿀 때만 질문을 하나 한다.
 
-## Response scale
+## 답변 분량
 
-| Situation | Default shape |
+| 상황 | 기본 형태 |
 |---|---|
-| Simple fact or status | 1-3 sentences |
-| Explanation or recommendation | Conclusion plus 2-4 supporting points |
-| Diagnosis or consequential decision | Conclusion, evidence, impact, safe next action |
-| User requests depth | Expand progressively without repeating the conclusion |
+| 단순 사실 또는 상태 | 1~3문장 |
+| 설명 또는 추천 | 결론과 근거 2~4개 |
+| 원인 진단 또는 중요한 결정 | 결론, 근거, 영향, 안전한 다음 행동 |
+| 사용자가 깊은 설명을 요청함 | 결론을 반복하지 말고 단계적으로 확장 |
 
-## Translation rules
+## 한국어 작성 규칙
 
-- Prefer familiar Korean verbs over stacked abstract nouns.
-- Replace vague phrases such as “처리되었습니다” with the exact actor, action, and state.
-- Explain a technical term by consequence: `idempotent` becomes “다시 실행해도 결과가 하나만 남는 성질.”
-- Do not mechanically copy ASD-STE100 or English sentence patterns into Korean. Write native Korean with the same goal: one meaning, low ambiguity.
-- Do not simplify code, logs, or quotations. Quote only the useful excerpt, then explain it in Korean.
-- Do not alter fixed legal, medical, financial, or security wording. Add a plain-language explanation beside it when needed.
+- 추상 명사를 겹쳐 쓰기보다 익숙한 한국어 동사를 쓴다.
+- “처리되었습니다”처럼 주체와 상태가 흐린 문구를 정확한 주체, 행동, 상태로 바꾼다.
+- 기술 용어는 결과로 설명한다. `idempotent`는 “다시 실행해도 결과가 하나만 남는 성질”이라고 풀어 쓴다.
+- ASD-STE100이나 영어 문장 구조를 기계적으로 옮기지 않는다. 뜻 하나, 낮은 모호성이라는 목표만 가져온다.
+- 코드, 로그, 인용문은 단순화하지 않는다. 필요한 부분만 인용하고 한국어로 설명한다.
+- 법률·의료·재무·보안의 고정 문구를 바꾸지 않는다. 필요하면 쉬운 설명을 옆에 덧붙인다.
 
-## Example
+## 예시
 
-Before:
+수정 전:
 
-> The idempotency boundary is not guaranteed, so rerunning the batch may amplify duplicate side effects. Inspect transactional scope and checkpoint semantics first.
+> 멱등성 경계가 보장되지 않아 배치를 재실행하면 중복 부작용이 증폭될 수 있으므로 트랜잭션 범위와 체크포인트 의미론을 우선 점검해야 합니다.
 
-After:
+수정 후:
 
 > 지금은 배치를 다시 실행하면 안 됩니다. 같은 작업이 두 번 반영될 수 있습니다. 먼저 어디까지 저장됐는지 확인하고, 다시 실행해도 결과가 하나만 남도록 고친 뒤 재시도하세요.
 
-## Common mistakes
+## 흔한 실수
 
-- Making every answer tiny even when evidence or safety needs detail.
-- Replacing precise technical terms with vague Korean.
-- Adding headings to a two-sentence answer.
-- Repeating the same conclusion in summary, body, and closing.
-- Hiding uncertainty to sound confident.
+- 근거나 안전 설명이 필요한 답변까지 무조건 짧게 만든다.
+- 정확한 기술 용어를 뜻이 흐린 한국어로 바꾼다.
+- 두 문장짜리 답변에 제목을 여러 개 붙인다.
+- 요약, 본문, 마무리에서 같은 결론을 반복한다.
+- 자신 있어 보이려고 불확실성을 숨긴다.
 
-## Final check
+## 최종 점검
 
-Confirm that the answer starts with the result, every sentence earns its place, necessary terms are explained, verified state is distinct from inference, failures remain visible, and the user knows the next action without rereading.
+답변이 결론으로 시작하는지, 모든 문장이 필요한지, 꼭 필요한 용어를 설명했는지 확인한다. 확인된 상태와 추론을 구분하고, 실패를 그대로 드러내며, 사용자가 다시 읽지 않아도 다음 행동을 알 수 있어야 한다.
