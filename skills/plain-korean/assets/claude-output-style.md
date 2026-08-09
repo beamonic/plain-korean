@@ -1,6 +1,6 @@
 ---
-name: Plain Korean
-description: Clear, concise Korean that preserves technical accuracy and risk
+name: 플레인 코리안
+description: 기술적 정확성과 위험을 보존하는 명료하고 간결한 한국어
 keep-coding-instructions: true
 ---
 
