@@ -20,25 +20,25 @@ class PlainKoreanSkillTest(unittest.TestCase):
 
     def test_frontmatter_is_discoverable(self):
         self.assertRegex(self.skill, r"(?m)^name: plain-korean$")
-        self.assertRegex(self.skill, r"(?m)^description: Use when .+")
+        self.assertRegex(self.skill, r"(?m)^description: .+때 사용한다\.$")
         self.assertNotIn("TODO", self.skill)
 
     def test_clarity_contract_preserves_meaning(self):
         for phrase in (
-            "Lead with the answer",
-            "one idea per sentence",
-            "Define necessary technical terms",
-            "verified facts",
-            "inference",
-            "failures",
-            "one question",
-            "Do not simplify code, logs, or quotations",
+            "결론과 현재 상태",
+            "한 문장에는 한 가지 뜻",
+            "꼭 필요한 기술 용어",
+            "확인된 사실",
+            "추론",
+            "실패",
+            "질문을 하나",
+            "코드, 로그, 인용문은 단순화하지 않는다",
         ):
             self.assertIn(phrase, self.skill)
 
     def test_output_style_keeps_coding_behavior(self):
         text = OUTPUT_STYLE.read_text(encoding="utf-8")
-        self.assertRegex(text, r"(?m)^name: Plain Korean$")
+        self.assertRegex(text, r"(?m)^name: 플레인 코리안$")
         self.assertRegex(text, r"(?m)^description: .+")
         self.assertRegex(text, r"(?m)^keep-coding-instructions: true$")
         self.assertIn("한국어", text)
@@ -46,7 +46,7 @@ class PlainKoreanSkillTest(unittest.TestCase):
         self.assertIn("검증", text)
 
     def test_ui_metadata_invokes_the_skill(self):
-        self.assertIn('display_name: "Plain Korean"', self.openai_yaml)
+        self.assertIn('display_name: "플레인 코리안"', self.openai_yaml)
         self.assertIn("$plain-korean", self.openai_yaml)
 
     def test_skill_stays_small(self):
@@ -55,15 +55,24 @@ class PlainKoreanSkillTest(unittest.TestCase):
 
 
 class PublicSurfaceTest(unittest.TestCase):
+    def test_public_prose_uses_korean(self):
+        self.assertFalse(README_KO.exists())
+        self.assertIn("# 플레인 코리안", README.read_text(encoding="utf-8"))
+        self.assertIn("# 플레인 코리안", SKILL.read_text(encoding="utf-8"))
+        self.assertIn('display_name: "플레인 코리안"', OPENAI_YAML.read_text(encoding="utf-8"))
+        self.assertRegex(
+            OUTPUT_STYLE.read_text(encoding="utf-8"),
+            r"(?m)^name: 플레인 코리안$",
+        )
+
     def test_public_readmes_and_license_exist(self):
-        for path in (README, README_KO, LICENSE):
+        for path in (README, LICENSE):
             self.assertTrue(path.is_file(), path)
 
     def test_installation_uses_beamonic_repository(self):
-        for path in (README, README_KO):
-            text = path.read_text(encoding="utf-8")
-            self.assertIn("https://github.com/beamonic/plain-korean.git", text)
-            self.assertIn("claude-output-style.md", text)
+        text = README.read_text(encoding="utf-8")
+        self.assertIn("https://github.com/beamonic/plain-korean.git", text)
+        self.assertIn("claude-output-style.md", text)
 
     def test_public_files_do_not_leak_private_lanes(self):
         forbidden = re.compile(
