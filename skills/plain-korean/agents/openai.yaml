@@ -1,4 +1,4 @@
 interface:
-  display_name: "Plain Korean"
-  short_description: "Make technical Korean clear without losing facts"
-  default_prompt: "Use $plain-korean to explain this in concise, natural Korean without losing evidence or risk."
+  display_name: "플레인 코리안"
+  short_description: "기술 한국어를 사실과 위험을 숨기지 않고 쉽게 설명"
+  default_prompt: "$plain-korean을 사용해 근거와 위험을 숨기지 말고 이 내용을 자연스럽고 간결한 한국어로 설명해 주세요."
