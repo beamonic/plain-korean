@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plain Korean"
+  short_description: "Make technical Korean clear without losing facts"
+  default_prompt: "Use $plain-korean to explain this in concise, natural Korean without losing evidence or risk."
