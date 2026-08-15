@@ -49,6 +49,19 @@ python3 -m unittest -v tests/test_skill.py
 python3 /path/to/skill-creator/scripts/quick_validate.py skills/plain-korean
 ```
 
+## 관련 프로젝트
+
+한국어 글쓰기 자산은 통제 언어 규격 [STE-KO](https://github.com/beamonic/ste-ko)를 기반으로 층을 이룹니다. 플레인 코리안은 그중 `대화` 표면 구현체입니다.
+
+| 층 | 프로젝트 | 무엇 | 언제 |
+|---|---|---|---|
+| 규격 | [ste-ko](https://github.com/beamonic/ste-ko) | 규칙 70개와 표면 4개 | 무엇이 위반인지 번호로 판정할 때 |
+| `대화` 표면 | [plain-korean](https://github.com/beamonic/plain-korean) | 답변 문체 | 에이전트가 답변을 쓸 때 |
+| `UI` 표면 | [ux-writing-ko](https://github.com/beamonic/ux-writing-ko) | 제품 말투와 화면 문구 | 버튼, 오류, 빈 화면을 쓸 때 |
+| 표면 무관 | [no-ai-slop-ko](https://github.com/beamonic/no-ai-slop-ko) | 편집 도구 | 사람이 쓴 초안을 다듬을 때 |
+
+같은 규칙을 두 곳에서 따로 정하지 않습니다. 규칙은 STE-KO에 한 번만 쓰고, 표면 저장소는 그 규격이 비워둔 자리만 채웁니다.
+
 ## 저장소 언어 원칙
 
 사람이 읽는 설명과 메타데이터는 한국어로 씁니다. 코드, 명령어, 고정된 기술 식별자와 법적 효력을 보존해야 하는 공식 라이선스 원문은 예외입니다.
